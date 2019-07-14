@@ -1,3 +1,11 @@
+/**
+ * @file   dummydevice.c
+ * @author Alan-Lee Perkins
+ * @date   14 July 2019
+ * @version 0.1
+ * @brief   a dummy device device - kernel module - usable as an example for building a kernel module
+ * @see https://github.com/itandarts/kmodule-dummy for more
+ */
 #include <linux/init.h>
 #include <linux/module.h>
 #include <linux/kernel.h>
@@ -5,6 +13,12 @@
 #include <linux/uaccess.h>
 
 #define DEVICE_NAME "dummydevice"
+
+MODULE_LICENSE("GPL");            ///< The license type -- this affects available functionality
+MODULE_AUTHOR("Alan-Lee Perkins");    ///< The author -- visible when you use modinfo
+MODULE_DESCRIPTION("DummyDevice Model for the linux kernel");  ///< The description -- see modinfo
+MODULE_VERSION("0.1");            ///< A version number to inform users
+
 
 static int dev_open(struct inode*, struct file*);
 static int dev_release(struct inode*, struct file*);
