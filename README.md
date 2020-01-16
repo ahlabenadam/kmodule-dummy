@@ -11,7 +11,7 @@ sudo rmmod dummydevice
 ## create a filesystem node for 'dummydevice'
 sudo mknod dummydevice c majornumber 0
 ## check the node has been added successfully
-ls -l | grep dummydevice
+lsmod | grep dummydevice
 
 ## read from the device
 cat /dev/dummydevice
