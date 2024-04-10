@@ -104,13 +104,11 @@ static int dev_release(struct inode *inodep, struct file *filep) {
 }
 
 static ssize_t dev_read(struct file *filep, char *buffer, size_t len, loff_t *offset) {
-    int errors = 0;
-    char *message = "dummydevice read response!\n";
-    int message_len = strlen(message);
+    char lbuf[128];
+    int l;
 
-    errors = copy_to_user(buffer, message, message_len);
-
-    return errors == 0 ? message_len : -EFAULT;
+    l = snprintf(lbuf, sizeof(lbuf), "dummymodule read response\n");
+    return simple_read_from_buffer(buffer, len, offset, lbuf, l);
 }
 
 module_init(dummydevice_init);

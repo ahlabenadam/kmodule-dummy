@@ -15,4 +15,4 @@ lsmod | grep dummydevice
 cat /dev/dummydevice
 
 ## write into the device
-"test" >> /dev/dummydevice
+echo "test" >> /dev/dummydevice
